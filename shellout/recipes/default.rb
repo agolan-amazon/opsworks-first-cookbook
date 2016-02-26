@@ -4,6 +4,8 @@ script_file = file "/tmp/shellout" do
   mode 0700
 end
 
-execute "shellout" do
-  command "/tmp/shellout"
+ruby_block "shellout" do
+  block do
+    Chef::Log.info shell_out("/tmp/shellout").stdout
+  end
 end
